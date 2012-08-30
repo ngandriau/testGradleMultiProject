@@ -1,0 +1,16 @@
+apply plugin: 'war'
+
+dependencies {
+    compile project(':util')
+    compile project(':service')
+    compile project(':api')
+
+    compile "org.springframework:spring-core:$springVersion"
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-web:$springVersion"
+
+    compile "org.apache.cxf:cxf-api:$cxfVersion"
+    compile "org.apache.cxf:cxf-rt-frontend-jaxws:$cxfVersion"
+    compile "org.apache.cxf:cxf-rt-transports-http:$cxfVersion"
+//    compile "org.apache.cxf:cxf-rt-transports-http-jetty:$cxfVersion"
+}

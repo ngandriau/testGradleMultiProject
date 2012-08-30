@@ -1,0 +1,53 @@
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'groovy'
+    apply plugin: 'idea'
+
+    sourceCompatibility = '1.6'
+    version = '1.0'
+
+    ext {
+        springVersion = "3.1.2.RELEASE"
+        cxfVersion = "2.6.1"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'commons-collections:commons-collections:3.2.1'
+        compile 'org.apache.commons:commons-lang3:3.1'
+        compile 'log4j:log4j:1.2.17'
+
+        testCompile 'junit:junit:4.+'
+    }
+
+    jar {
+        manifest {
+            attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+        }
+    }
+
+    test {
+        systemProperties 'property': 'value'
+    }
+
+    uploadArchives {
+        repositories {
+            flatDir {
+                dirs '../repos'
+            }
+        }
+    }
+
+    task makeDirs(description: 'make all dirs for project setup') << {
+        def sources = [sourceSets.main, sourceSets.test]
+        sources*.allSource*.srcDirs.flatten().each { File srcDir ->
+            println "making $srcDir"
+            srcDir.mkdirs()
+        }
+
+        //TODO add log4j support or slf4j with a proper file generated...
+    }
+}

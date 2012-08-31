@@ -17,5 +17,6 @@ public class MyStringUtilTest {
     public void testWhenBlank(){
         assertTrue("should detect that string is blank", MyStringUtil.islank("   "));
         assertTrue("should detect that string is blank", MyStringUtil.islank(""));
+        assertFalse("should detect that string is not blank", MyStringUtil.islank("issue-2"));
     }
 }

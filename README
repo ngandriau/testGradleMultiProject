@@ -1,0 +1,3 @@
+This project is a sample of a multi module project managed with gradle.
+
+It is currently in a very simple test, as only the dependencies are managed
